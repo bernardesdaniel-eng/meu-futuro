@@ -1,0 +1,261 @@
+/* Reset e Configurações Gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+    background-color: #070a07;
+    color: #00ff41;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Cabeçalho */
+header {
+    text-align: center;
+    padding: 2rem 1rem;
+    border-bottom: 2px solid #00ff41;
+    background: linear-gradient(180deg, #0d1a0d 0%, #070a07 100%);
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
+}
+
+header h1 {
+    font-size: 2.8rem;
+    letter-spacing: 6px;
+    text-shadow: 0 0 10px #00ff41;
+}
+
+.subtitulo {
+    color: #80ff9f;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+}
+
+/* Container Principal */
+.container {
+    max-width: 900px;
+    width: 90%;
+    margin: 2rem auto;
+    flex: 1;
+}
+
+/* Palco da Animação */
+.palco-animacao {
+    position: relative;
+    height: 300px;
+    background-color: #0b120b;
+    border: 2px solid #00ff41;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    box-shadow: inset 0 0 30px rgba(0, 255, 65, 0.15);
+}
+
+/* Grade estilo Radar no fundo */
+.radar-grid {
+    position: absolute;
+    inset: 0;
+    background-image: 
+        linear-gradient(to right, rgba(0, 255, 65, 0.1) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 255, 65, 0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+    animation: moverCenario 2s linear infinite;
+}
+
+@keyframes moverCenario {
+    from { background-position: 0 0; }
+    to { background-position: -30px 0; }
+}
+
+/* HUD (Informações na tela) */
+.status-hud {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    font-weight: bold;
+    background: rgba(0, 20, 0, 0.8);
+    padding: 8px 12px;
+    border: 1px solid #00ff41;
+    border-radius: 4px;
+}
+
+/* Animação do Soldado Marchando */
+#soldado-container {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 15px;
+    animation: pularMarcha 0.5s ease-in-out infinite alternate;
+}
+
+.sombra {
+    width: 80px;
+    height: 12px;
+    background: rgba(0, 255, 65, 0.25);
+    border-radius: 50%;
+    margin: -12px auto 0;
+    animation: sombraMarcha 0.5s ease-in-out infinite alternate;
+}
+
+/* Movimentos articulados das partes do SVG */
+#perna-frente {
+    transform-origin: 60px 115px;
+    animation: marcharFrente 0.5s ease-in-out infinite alternate;
+}
+
+#perna-tras {
+    transform-origin: 60px 115px;
+    animation: marcharTras 0.5s ease-in-out infinite alternate;
+}
+
+#braco-frente {
+    transform-origin: 59px 68px;
+    animation: balancarBraco 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes pularMarcha {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-6px); }
+}
+
+@keyframes sombraMarcha {
+    0% { transform: scale(1); opacity: 0.4; }
+    100% { transform: scale(0.85); opacity: 0.2; }
+}
+
+@keyframes marcharFrente {
+    0% { transform: rotate(-22deg); }
+    100% { transform: rotate(22deg); }
+}
+
+@keyframes marcharTras {
+    0% { transform: rotate(22deg); }
+    100% { transform: rotate(-22deg); }
+}
+
+@keyframes balancarBraco {
+    0% { transform: rotate(25deg); }
+    100% { transform: rotate(-25deg); }
+}
+
+/* Botões e Linha do Tempo */
+.linha-do-tempo {
+    margin-top: 2rem;
+}
+
+.linha-do-tempo h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.botoes-etapas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.btn-etapa {
+    background-color: #0d140d;
+    color: #00ff41;
+    border: 2px solid #1b4d1b;
+    padding: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-etapa .tempo {
+    font-size: 0.8rem;
+    color: #70db70;
+    margin-bottom: 0.3rem;
+}
+
+.btn-etapa strong {
+    font-size: 1.1rem;
+}
+
+.btn-etapa:hover {
+    border-color: #00ff41;
+    background-color: #132413;
+}
+
+.btn-etapa.ativo {
+    background-color: #00ff41;
+    color: #050805;
+    border-color: #00ff41;
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.5);
+}
+
+.btn-etapa.ativo .tempo {
+    color: #0a290a;
+    font-weight: bold;
+}
+
+/* Painel de Detalhes */
+.painel-detalhes {
+    background-color: #0d140d;
+    border: 1px solid #00ff41;
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.painel-detalhes h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+}
+
+.painel-detalhes p {
+    color: #b3ffb3;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.barra-progresso-container {
+    width: 100%;
+    height: 12px;
+    background-color: #050805;
+    border: 1px solid #00ff41;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.barra-progresso {
+    height: 100%;
+    width: 33%;
+    background-color: #00ff41;
+    transition: width 0.5s ease;
+}
+
+/* Rodapé */
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    border-top: 1px solid #1b4d1b;
+    font-size: 0.85rem;
+    color: #5cd65c;
+}
+
+/* Responsividade para celulares */
+@media (max-width: 600px) {
+    .botoes-etapas {
+        grid-template-columns: 1fr;
+    }
+    header h1 {
+        font-size: 2rem;
+    }
+}

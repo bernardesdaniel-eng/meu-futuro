@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Futuro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>MEU FUTURO</h1>
+        <p class="subtitulo">Missão: Carreira Militar &bull; Disciplina e Honra</p>
+    </header>
+
+    <main class="container">
+        <!-- Área da Animação do Soldado -->
+        <section class="palco-animacao">
+            <div class="radar-grid"></div>
+            
+            <div id="soldado-container" class="soldado-marchando">
+                <!-- Ilustração em Vetor (SVG) do Soldado -->
+                <svg id="soldado-svg" viewBox="0 0 120 180" width="140" height="210">
+                    <!-- Mochila -->
+                    <rect x="28" y="65" width="18" height="45" rx="4" fill="#1b3b1b" stroke="#00ff41" stroke-width="2"/>
+                    
+                    <!-- Perna de trás -->
+                    <g id="perna-tras">
+                        <rect x="52" y="115" width="14" height="40" rx="4" fill="#142b14" stroke="#00ff41" stroke-width="2"/>
+                        <rect x="50" y="152" width="22" height="12" rx="3" fill="#0a0a0a" stroke="#00ff41" stroke-width="2"/>
+                    </g>
+
+                    <!-- Tronco (Farda) -->
+                    <rect x="44" y="60" width="32" height="58" rx="6" fill="#1e4620" stroke="#00ff41" stroke-width="2"/>
+                    
+                    <!-- Divisa / Patente no Ombro (Muda com JS) -->
+                    <g id="patente-visual">
+                        <!-- Recruta: sem divisas iniciais -->
+                    </g>
+
+                    <!-- Cinto Tático -->
+                    <rect x="43" y="102" width="34" height="8" fill="#050505" stroke="#00ff41" stroke-width="1.5"/>
+
+                    <!-- Perna da frente -->
+                    <g id="perna-frente">
+                        <rect x="54" y="115" width="14" height="40" rx="4" fill="#1e4620" stroke="#00ff41" stroke-width="2"/>
+                        <rect x="52" y="152" width="22" height="12" rx="3" fill="#0a0a0a" stroke="#00ff41" stroke-width="2"/>
+                    </g>
+
+                    <!-- Cabeça -->
+                    <circle cx="60" cy="38" r="14" fill="#d2a679" stroke="#00ff41" stroke-width="2"/>
+                    
+                    <!-- Capacete / Boina (Muda de cor conforme a patente) -->
+                    <path id="capacete" d="M 44 36 C 44 20, 76 20, 76 36 Z" fill="#143314" stroke="#00ff41" stroke-width="2"/>
+                    <rect x="42" y="34" width="38" height="4" rx="2" fill="#00ff41"/>
+
+                    <!-- Braço -->
+                    <g id="braco-frente">
+                        <rect x="53" y="65" width="12" height="38" rx="5" fill="#255427" stroke="#00ff41" stroke-width="2"/>
+                    </g>
+                </svg>
+                <div class="sombra"></div>
+            </div>
+
+            <div class="status-hud">
+                <span id="patente-atual">PATENTE ATUAL: PREPARAÇÃO</span>
+                <span id="tempo-atual">INÍCIO DA JORNADA</span>
+            </div>
+        </section>
+
+        <!-- Controles e Linha do Tempo -->
+        <section class="linha-do-tempo">
+            <h2>Selecione a Etapa da Missão:</h2>
+            
+            <div class="botoes-etapas">
+                <button class="btn-etapa ativo" data-etapa="quartel">
+                    <span class="tempo">Em Breve</span>
+                    <strong>Entrar no Quartel</strong>
+                </button>
+
+                <button class="btn-etapa" data-etapa="sargento">
+                    <span class="tempo">Daqui a 10 Anos</span>
+                    <strong>Sargento</strong>
+                </button>
+
+                <button class="btn-etapa" data-etapa="tenente">
+                    <span class="tempo">Daqui a 15 Anos</span>
+                    <strong>Tenente</strong>
+                </button>
+            </div>
+
+            <!-- Painel de Detalhes da Etapa -->
+            <div class="painel-detalhes">
+                <h3 id="titulo-etapa">O Primeiro Passo: Entrar no Quartel</h3>
+                <p id="descricao-etapa">
+                    A base de tudo. O momento de vestir a farda pela primeira vez, aprender a hierarquia, superar os limites físicos e construir o caráter com disciplina e dedicação.
+                </p>
+                <div class="barra-progresso-container">
+                    <div id="barra-progresso" class="barra-progresso"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Planejamento Estratégico Pessoal &bull; Foco na Missão</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
